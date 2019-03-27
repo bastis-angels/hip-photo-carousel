@@ -1,2 +1,2 @@
 # hip-photo-carousel
-Header images for campsite product page
+Module that allows the user to view other user images of the property and upvote helpful photos
