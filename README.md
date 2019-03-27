@@ -3,6 +3,7 @@ Module that allows the user to view other user images of the property and upvote
 
 
 # Related Projects
+
 https://github.com/bastis-angels/hip-booking
 https://github.com/bastis-angels/hip-header-with-description
 https://github.com/bastis-angels/hip-reviews
