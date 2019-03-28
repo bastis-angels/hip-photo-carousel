@@ -1,17 +1,32 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
+  "name": "hip-photo-carousel",
+  "version": "1.0.0",
+  "description": "Hack Reactor frontend capstone creating photo module for Hipcamp",
+  "author": "Megan Keesee",
   "license": "",
   "engines": {
-    "node": ">=6.13.0"
+    "node": ">=8.15.1"
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --watch",
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
+    "express": "^4.16.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^24.5.0",
+    "nodemon": "^1.18.10",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   }
 }
