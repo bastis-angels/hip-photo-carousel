@@ -1,5 +1,6 @@
 const db  = require('./index.js');
 const Listing = require('./Listing.js');
+const faker = require('faker');
 
 const sampleListings = () => {
   const listings = [];
