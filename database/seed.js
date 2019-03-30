@@ -1,6 +1,9 @@
 const db  = require('./index.js');
 const Listing = require('./Listing.js');
 const faker = require('faker');
+const mongoose = require('mongoose');
+
+
 
 const sampleListings = () => {
   const listings = [];
@@ -35,7 +38,7 @@ const sampleListings = () => {
     
     //listing file
     listings.push({
-      'id' : id,
+      '_id' : id,
       'elevation' : elevation,
       'weather' : weather,
       'distance' : distance,
@@ -43,12 +46,13 @@ const sampleListings = () => {
       'helpfulVotes' : helpfulVotes
     });
   }
+  console.log(listings);
   return listings;
 }
 
 
 const insertSampleListings = () => {
-  Listing.create(sampleListings)
+  Listing.create(sampleListings())
     .then(() => db.disconnect());
 };
 

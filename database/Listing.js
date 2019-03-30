@@ -3,7 +3,7 @@ const db = require('./index.js');
 mongoose.Promise = global.Promise;
 
 let listingSchema = mongoose.Schema({
-  'id' : Number,
+  '_id' : Number,
   'elevation' : Number,
   'weather' : Number,
   'distance' : Number,
