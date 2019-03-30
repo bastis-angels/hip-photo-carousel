@@ -3,8 +3,6 @@ const Listing = require('./Listing.js');
 const faker = require('faker');
 const mongoose = require('mongoose');
 
-
-
 const sampleListings = () => {
   const listings = [];
   
