@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "build": "webpack --watch",
     "start": "nodemon server/index.js",
     "db:setup": "node ./database/seed.js"
@@ -27,11 +28,23 @@
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^24.5.0",
     "nodemon": "^1.18.10",
+    "redux-mock-store": "^1.5.3",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./spec/setup/setupEnzyme.js",
+    "testPathIgnorePatterns": [
+      "./spec/setup/"
+    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }
