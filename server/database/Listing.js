@@ -13,8 +13,8 @@ let listingSchema = mongoose.Schema({
     'imageURL' : String,
     'datePosted' : String,
     'location' : String,
+    'helpfulVotes' : Number
   }],
-  'helpfulVotes' : Number
 });
 
 const Listing = mongoose.model('Listing', listingSchema);
