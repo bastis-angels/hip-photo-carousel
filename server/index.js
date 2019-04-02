@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({ extended : true }));
 
 //get all listings
 app.get('/listing/:listingID', (req, res) => {
-  //TODO - get the camp listing your searching for
   Listings.findById(req.params.listingID, (err, listing) => {
     if (err) {
       console.error('something went wrong with your get route', err);
@@ -23,7 +22,15 @@ app.get('/listing/:listingID', (req, res) => {
 });
 
 app.patch('/listing/:listingID/:photoID', (req, res) => {
-  //TODO - get the right listing image and increment the helpful vote by 1
+  Listings.findById(req.params.listingID.images.imageID, (err, image) => {
+    //TODO - get the right listing image and increment the helpful vote by 1
+    if (err) {
+      console.error('something went wrong with your patch route', err);
+    } else {
+      console.log(res.status);
+      image.helpfulVotes += 1;
+      res.end(image);
+    }
 })
 
 app.listen(port, () => {
