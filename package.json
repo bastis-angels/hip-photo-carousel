@@ -2,6 +2,7 @@
   "name": "hip-photo-carousel",
   "version": "1.0.0",
   "description": "Hack Reactor frontend capstone creating photo module for Hipcamp",
+  "mode": "development",
   "author": "Megan Keesee",
   "license": "",
   "engines": {
@@ -10,9 +11,10 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --colors",
     "build": "webpack --watch",
     "start": "nodemon server/index.js",
-    "db:setup": "node ./database/seed.js"
+    "db:setup": "node ./server/database/seed.js"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.3.3",
@@ -36,15 +38,9 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "jest": "^24.5.0",
     "nodemon": "^1.18.10",
+    "react-test-renderer": "^16.8.6",
     "redux-mock-store": "^1.5.3",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
-  },
-  "jest": {
-    "setupTestFrameworkScriptFile": "./spec/setup/setupEnzyme.js",
-    "testPathIgnorePatterns": [
-      "./spec/setup/"
-    ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }
