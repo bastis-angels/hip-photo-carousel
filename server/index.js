@@ -32,6 +32,7 @@ app.patch('/listing/:listingID/:photoID', (req, res) => {
       res.end(image);
     }
 })
+});
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
