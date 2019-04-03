@@ -4,14 +4,11 @@ body {
   padding: 0 0 100px 0;
   font-family: sans-serif;
   overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-.card {
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-}
 
+/* Arrows */
 .arrow {
   font-size: 30px;
   height: 100px;
@@ -35,8 +32,6 @@ body {
   z-index: 999;
 }
 
-
-
 .backArrow {
   position: absolute;
   top: 50%;
@@ -45,6 +40,36 @@ body {
 
 .fa-arrow-right:before, .fa-arrow-left:before {
   color: #b4b4b4
+}
+
+/* Cards */
+
+.card {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.userAvatar {
+  color: white;
+  font-size: 50px;
+}
+
+.socialMediaIcons {
+  color: white;
+  font-size: 15x;
+  align-content: right;
+  display: flex; 
+}
+
+.icon {
+  margin: 5px;
+}
+
+.icon:hover {
+  font-size: 25px;
 }
 
 

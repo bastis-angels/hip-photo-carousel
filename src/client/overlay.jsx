@@ -5,7 +5,7 @@ import LeftArrow from './leftArrow.jsx';
 import RightArrow from './rightArrow.jsx';
 
 
-class App extends React.Component {
+class Overlay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,5 +69,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Overlay;
 
