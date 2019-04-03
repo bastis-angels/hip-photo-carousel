@@ -1,15 +1,17 @@
 import React from 'react';
 import data from './data.js';
 import Card from './card.jsx';
+import LeftArrow from './leftArrow.jsx';
+import RightArrow from './rightArrow.jsx';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      listing: data,
       images: data.images,
-      image: data.images[0]
+      currentIndex: 0,
+      translateValue: 0
     }
 
     this.nextImage = this.nextImage.bind(this);
@@ -17,36 +19,55 @@ class App extends React.Component {
   }
 
   nextImage() {
-    const newIndex = this.state.image.index + 1;
-    this.setState = ({
-      image: data.images[newIndex],
+    // Exit the method early if we are at the end of the images array and 
+    // reset currentIndex and translateValue, to return to the first image in the array.
+    if(this.state.currentIndex === this.state.images.length - 1) {
+      return this.setState({
+        currentIndex: 0,
+        translateValue: 0
+      })
+    }
+
+    this.setState = prevState => ({
+      currentIndex: prevState.currentIndex + 1,
+      translateValue: prevState.translateValue + -(this.cardWidth()),
     })
   }
 
   prevImage() {
-    const prevIndex = this.state.image.index - 1;
-    this.setState = ({
-      image: data.images[prevIndex],
+    if (this.state.currentIndex === 0) {
+      return;
+    }
+    this.setState = prevState => ({
+      currentIndex: prevState.currentIndex - 1,
+      translateValue: prevState.translateValue + this.slideWidth()
     })
+  }
+
+  cardWidth() {
+    return document.querySelector('.card').clientWidth;
   }
 
   render() {
     return (
-    <div>
-      <button onClick={() => this.prevImage()} id="previous-arrow">prev</button>
-      <button onClick={() => this.nextImage()} id="next-arrow">next</button>
-
       <div className="cards-slider">
-        <div className="cards-slider-wrapper">
-        {
-              this.state.images.map(image => <Card key={this.state.listing._id} image={image.imageURL} location={image.location} index={image.index}/>)
-            }
-        </div>
-      </div>
+        <div className="cards-slider-wrapper"
+          style={{
+            transform: `translateX(${this.state.translateValue}px)`,
+            transition: 'transform ease-out 0.45s'
+          }}>
 
-    </div>
+            {this.state.images.map(image => <Card key={image.index} image={image.imageURL} location={image.location} index={image.index}/>)}
+        
+        </div>
+
+        <LeftArrow prevImage={this.prevImage}/>
+
+        <RightArrow nextImage={this.nextImage}/>
+      </div>
     );
   }
 }
 
 export default App;
+
