@@ -9,10 +9,11 @@ const sampleListings = () => {
   for (let i = 1; i <= 100; i++) {
     let images = [];
   
-    for (let j = 1; j <= 30; j++) {
+    for (let j = 0; j < 30; j++) {
   
       //images file
       images.push({
+        'index' : j,
         'userId' : faker.random.number({min: 1, max: 100}),
         'imageURL' : faker.image.imageUrl(),
         'datePosted' : faker.date.past(),

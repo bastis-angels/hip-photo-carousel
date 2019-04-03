@@ -1,9 +1,19 @@
+/* main styles */
 body {
   margin: 0;
   padding: 0 0 100px 0;
   font-family: sans-serif;
   overflow-x: hidden;
 }
+
+.card {
+  padding: 0px;
+  margin: 7px;
+}
+
+
+
+/* slide functionality and animation*/
 
 .cards-slider-wrapper {
   display: flex; 

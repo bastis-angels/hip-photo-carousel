@@ -11,6 +11,9 @@ class App extends React.Component {
       images: data.images,
       image: data.images[0]
     }
+
+    this.nextImage = this.nextImage.bind(this);
+    this.prevImage = this.prevImage.bind(this);
   }
 
   nextImage() {
@@ -20,20 +23,27 @@ class App extends React.Component {
     })
   }
 
-  //prevImage()
+  prevImage() {
+    const prevIndex = this.state.image.index - 1;
+    this.setState = ({
+      image: data.images[prevIndex],
+    })
+  }
 
   render() {
     return (
     <div>
-      <button id="previous-arrow">prev</button>
-      <button onClick={() => this.nextImage()} disabled={this.state.images.index === data.images.length-1} id="next-arrow">next</button>
+      <button onClick={() => this.prevImage()} id="previous-arrow">prev</button>
+      <button onClick={() => this.nextImage()} id="next-arrow">next</button>
+
       <div className="cards-slider">
         <div className="cards-slider-wrapper">
         {
-              this.state.images.map(image => <Card key={this.state.listing._id} image={image.imageURL} location={image.location}/>)
+              this.state.images.map(image => <Card key={this.state.listing._id} image={image.imageURL} location={image.location} index={image.index}/>)
             }
         </div>
       </div>
+
     </div>
     );
   }
