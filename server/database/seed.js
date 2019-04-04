@@ -15,7 +15,7 @@ const sampleListings = () => {
       images.push({
         'index' : j,
         'userId' : faker.random.number({min: 1, max: 100}),
-        'imageURL' : faker.image.imageUrl(),
+        'imageURL' : `https://s3-us-west-1.amazonaws.com/bastis-camp-photos/wild-teepee-camp-${j + 1}.png`,
         'datePosted' : faker.date.past(),
         'location' : faker.random.words(4),
         'helpfulVotes' : faker.random.number({min: 1, max: 20})
@@ -31,7 +31,6 @@ const sampleListings = () => {
       'images' : images,
     });
   }
-  console.log(listings);
   return listings;
 }
 

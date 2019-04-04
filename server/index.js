@@ -25,7 +25,7 @@ app.get('/listing/:listingID', (req, res) => {
 app.patch('/listing/:listingID/:imageID', (req, res) => {
   Listings.findById(req.params.listingID, (err, listing) => {
     if (err) {
-      console.error('patch: couldn\'t find the listing', err);
+      res.status(404).send(err);
     } else {
       for (let i = 0; i < listing.images.length; i++) {
         if (listing.images[i].id = req.params.imageID) {
