@@ -61,7 +61,7 @@ describe('Overlay', () => {
     expect(nextImageSpy).toHaveBeenCalled();
   });
 
-  //state should update when left or right arrow is clicked
+  //state should update when left or right arrow is clicked – not really sure that this test is working
 
   it('updates the state on arrow click', () => {
     const leftArrowClick = shallow(<LeftArrow prevImage={prevImageSpy}/>);
