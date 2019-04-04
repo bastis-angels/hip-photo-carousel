@@ -30,7 +30,7 @@ class Overlay extends React.Component {
 
     this.setState = prevState => ({
       currentIndex: prevState.currentIndex + 1,
-      translateValue: prevState.translateValue + -(this.cardWidth()),
+      // translateValue: prevState.translateValue + -(this.cardWidth()),
     })
   }
 
@@ -40,7 +40,7 @@ class Overlay extends React.Component {
     }
     this.setState = prevState => ({
       currentIndex: prevState.currentIndex - 1,
-      translateValue: prevState.translateValue + this.slideWidth()
+      // translateValue: prevState.translateValue + this.cardWidth()
     })
   }
 
@@ -53,11 +53,16 @@ class Overlay extends React.Component {
       <div className="cards-slider">
         <div className="cards-slider-wrapper"
           style={{
-            transform: `translateX(${this.state.translateValue}px)`,
+            // transform: `translateX(${this.state.translateValue}px)`,
             transition: 'transform ease-out 0.45s'
           }}>
 
-            {this.state.images.map(image => <Card key={image.index} image={image.imageURL} location={image.location} index={image.index}/>)}
+            {this.state.images.map(image => <Card 
+              key={image.index} 
+              image={image.imageURL} 
+              location={image.location} 
+              index={image.index}
+            />)}
         
         </div>
 
