@@ -8,13 +8,13 @@ let listingSchema = mongoose.Schema({
   'weather' : Number,
   'distance' : Number,
   'images' : [{
-    'id' : Number,
+    'index' : Number,
     'userId' : Number,
     'imageURL' : String,
     'datePosted' : String,
     'location' : String,
+    'helpfulVotes' : Number
   }],
-  'helpfulVotes' : Number
 });
 
 const Listing = mongoose.model('Listing', listingSchema);

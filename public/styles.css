@@ -1,0 +1,132 @@
+/* main styles */
+body {
+  margin: 0;
+  padding: 0 0 100px 0;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.9);
+  font-family: "Calibre", Helvetica, Arial, sans-serif;
+}
+
+
+/* Arrows */
+.arrow {
+  font-size: 30px;
+  height: 100px;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #b4b4b4;
+  transition: transform ease-in .1s;
+}
+
+.arrow:hover {
+  color: #fff;
+  font-size: 40px;
+}
+
+.nextArrow {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  z-index: 999;
+}
+
+.backArrow {
+  position: absolute;
+  top: 50%;
+  z-index: 999;
+}
+
+.fa-arrow-right:before, .fa-arrow-left:before {
+  color: #b4b4b4
+}
+
+/* Cards */
+
+.counter{
+  color: #fff;
+  font-size: .65em;
+}
+.card {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.socialMediaIcons {
+  color: #fff;
+  font-size: 1em;
+  align-content: right;
+  display: flex; 
+}
+
+.icon {
+  margin: 5px;
+}
+
+.icon:hover {
+  font-size: 1.25em;
+}
+
+.userAvatar {
+  color: #fff;
+  font-size: 50px;
+}
+
+.userName {
+  color: #fff;
+  font-size: 1.5em;
+
+}
+
+.datePosted {
+  color: #918f8f;
+  font-size: .75em;
+}
+
+.location {
+  color: #fff;
+  font-size: .85em;
+}
+
+.helpful {
+  display: inline-block;
+  margin-bottom: 0;
+  height: 45px;
+  width: 105px;
+  color: #fff;
+  background-color: #40d9ac;
+  font-size: .75rem;
+  font-weight: 700;
+  text-align: center;
+  border-color: transparent;
+  vertical-align: middle;
+  transition: background-color 0.3s ease 0s, border-color 0.4s ease 0s, color 0.4s ease 0s;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+
+/* slide functionality and animation*/
+
+.cards-slider {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+  height: 500px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cards-slider-wrapper {
+  /* display: flex; 
+  position: absolute; */
+  position: relative;
+  height: 100%;
+  width: 100%;
+};

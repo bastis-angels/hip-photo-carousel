@@ -3,15 +3,14 @@ let app = express();
 const port = 3000;
 
 const bodyParser = require('body-parser');
-const Listings = require('../database/Listing.js')
+const Listings = require('../server/database/Listing.js')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 
 
-//get all listings
+//gets all listings
 app.get('/listing/:listingID', (req, res) => {
-  //TODO - get the camp listing your searching for
   Listings.findById(req.params.listingID, (err, listing) => {
     if (err) {
       console.error('something went wrong with your get route', err);
@@ -22,9 +21,22 @@ app.get('/listing/:listingID', (req, res) => {
   })
 });
 
-app.patch('/listing/:listingID/:photoID', (req, res) => {
-  //TODO - get the right listing image and increment the helpful vote by 1
+//Finds a particular listing image and updates the helpful vote count by 1
+app.patch('/listing/:listingID/:imageID', (req, res) => {
+  Listings.findById(req.params.listingID, (err, listing) => {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      for (let i = 0; i < listing.images.length; i++) {
+        if (listing.images[i].id = req.params.imageID) {
+          listing.images[i].helpfulVotes += 1;
+          res.status(206).send(listing.images[i]);
+          break;
+        }   
+      }
+    }
 })
+});
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
