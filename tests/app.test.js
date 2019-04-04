@@ -7,31 +7,34 @@ import Overlay from "../src/client/overlay"
 import { isTSAnyKeyword } from "@babel/types";
 import LeftArrow from "../src/client/leftArrow";
 import Card from "../src/client/card";
-import data from "../src/client/data";
 import RightArrow from "../src/client/rightArrow";
+
+import data from "../src/client/data";
 
 describe('Overlay', () => {
 
   //props should be passed from Overlay to child components 
+  //when you pass the prop down, does it go where you expect  it to
 
   it('displays image based on props.image', () => {
     const card = shallow(
       <Card 
-        key={image.index} 
-        image={'https://s3-us-west-1.amazonaws.com/bastis-camp-photos/wild-teepee-camp-1.png'} 
-        location={image.location} 
-        index={image.index}
+        key={1}
+        image='https://s3-us-west-1.amazonaws.com/bastis-camp-photos/wild-teepee-camp-1.png'
+        location={'location'} 
+        index={1}
       />
     );
 
-    expect(card.find('.card').image()).toBe('https://s3-us-west-1.amazonaws.com/bastis-camp-photos/wild-teepee-camp-1.png');
+    expect(card.find('img').prop('src')).toBe('https://s3-us-west-1.amazonaws.com/bastis-camp-photos/wild-teepee-camp-1.png');
 
     card.setProps({image: 'https://s3-us-west-1.amazonaws.com/bastis-camp-photos/wild-teepee-camp-2.png'});
 
-    expect(card.find('.card').image()).toBe('https://s3-us-west-1.amazonaws.com/bastis-camp-photos/wild-teepee-camp-2.png');
+    expect(card.find('img').prop('src')).toBe('https://s3-us-west-1.amazonaws.com/bastis-camp-photos/wild-teepee-camp-2.png');
   });
 
-  //image functions should be caleed on left or right arrow clicks
+  //image functions should be called on left or right arrow clicks
+  //tests that props are passed down 
 
   it('calls props.prevImage on left arrow click', () => {
     const prevImageSpy = jest.fn();
