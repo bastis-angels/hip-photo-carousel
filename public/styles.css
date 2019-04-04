@@ -4,7 +4,8 @@ body {
   padding: 0 0 100px 0;
   font-family: sans-serif;
   overflow-x: hidden;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
+  font-family: "Calibre", Helvetica, Arial, sans-serif;
 }
 
 
@@ -21,7 +22,7 @@ body {
 }
 
 .arrow:hover {
-  color: white;
+  color: #fff;
   font-size: 40px;
 }
 
@@ -44,6 +45,10 @@ body {
 
 /* Cards */
 
+.counter{
+  color: #fff;
+  font-size: .65em;
+}
 .card {
   display: inline-block;
   height: 100%;
@@ -52,14 +57,10 @@ body {
   justify-content: center;
 }
 
-.userAvatar {
-  color: white;
-  font-size: 50px;
-}
 
 .socialMediaIcons {
-  color: white;
-  font-size: 15x;
+  color: #fff;
+  font-size: 1em;
   align-content: right;
   display: flex; 
 }
@@ -69,7 +70,45 @@ body {
 }
 
 .icon:hover {
-  font-size: 25px;
+  font-size: 1.25em;
+}
+
+.userAvatar {
+  color: #fff;
+  font-size: 50px;
+}
+
+.userName {
+  color: #fff;
+  font-size: 1.5em;
+
+}
+
+.datePosted {
+  color: #918f8f;
+  font-size: .75em;
+}
+
+.location {
+  color: #fff;
+  font-size: .85em;
+}
+
+.helpful {
+  display: inline-block;
+  margin-bottom: 0;
+  height: 45px;
+  width: 105px;
+  color: #fff;
+  background-color: #40d9ac;
+  font-size: .75rem;
+  font-weight: 700;
+  text-align: center;
+  border-color: transparent;
+  vertical-align: middle;
+  transition: background-color 0.3s ease 0s, border-color 0.4s ease 0s, color 0.4s ease 0s;
+  touch-action: manipulation;
+  cursor: pointer;
 }
 
 
