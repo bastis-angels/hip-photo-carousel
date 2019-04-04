@@ -66,14 +66,14 @@ describe('Overlay', () => {
 
   //state should update when left or right arrow is clicked – not really sure that this test is working
 
-  it('updates the state on arrow click', () => {
-    const leftArrowClick = shallow(<LeftArrow prevImage={prevImageSpy}/>);
+  it('updates the state on left arrow click', () => {
+    const leftArrowClick = shallow(<Overlay prevImage={() => {}}/>);
     
-    leftArrowClick.find('.backArrow').simulate('change', {
-      target: {value: 1},
+    leftArrowClick.find('LeftArrow').simulate('change', {
+      target: {value: 1}
     });
 
-    expect(leftArrowClick.state().Overlay).toBe(1);
+    expect(leftArrowClick.state().currentIndex).toBe(1);
 
   })
 
