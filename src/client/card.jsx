@@ -1,4 +1,5 @@
 import React from 'react';
+import HelpfulBtn from './HelpfulBtn.jsx';
 
 
 const Card = (props) => {
@@ -15,8 +16,8 @@ const Card = (props) => {
         <div className="datePosted">Posted on <span>{props.date}</span></div>
       </div>
 
-      <button className="helpful"><span className="thumb"><i class="far fa-thumbs-up"></i> &nbsp; </span> Helpful <span> &nbsp; {props.upVotes} </span></button>
-     
+      <HelpfulBtn votes={props.UpVotes} />
+
       <div className="location">
           <span><i class="fas fa-map-marker-alt"></i></span> <span>{props.location}</span>
       </div>

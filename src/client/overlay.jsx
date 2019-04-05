@@ -17,6 +17,7 @@ class Overlay extends React.Component {
 
     this.nextImage = this.nextImage.bind(this);
     this.prevImage = this.prevImage.bind(this);
+    this.incrementUpVotes = this.incrementUpVotes.bind(this);
   }
 
   nextImage() {
@@ -43,6 +44,13 @@ class Overlay extends React.Component {
     });
   }
 
+  incrementUpVotes(e) {
+    //will replace this with a patch request that increments upvotes by 1
+    e.preventDefault();
+    var helpfulVotes = this.state.image.helpfulVotes + 1;
+    this.state.image.helpfulVotes = helpfulVotes;
+  }
+
   render() {
     return (
       <div className="overlay">
@@ -60,6 +68,7 @@ class Overlay extends React.Component {
                 location={this.state.image.location} 
                 date={this.state.image.datePosted}
                 upVotes={this.state.image.helpfulVotes}
+                incrementUpVotes= {this.incrementUpVotes}
               />
           
           </div>
