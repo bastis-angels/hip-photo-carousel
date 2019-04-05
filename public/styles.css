@@ -1,16 +1,16 @@
 /* main styles */
 .overlay {
   margin: 0;
-  padding: 0 0 100px 0;
+  padding: 50px 50px 100px 50px;
   font-family: sans-serif;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   background-color: rgba(0, 0, 0, 0.8);
   font-family: "Calibre", Helvetica, Arial, sans-serif;
   height: 100%;
   width: 100%;
-  left: 0;
-  top: 0;
-  padding: 50px;
+  /* left: 0;
+  top: 0; */
+  /* padding: 50px; */
 }
 
 
