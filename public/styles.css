@@ -1,11 +1,16 @@
 /* main styles */
-body {
+.overlay {
   margin: 0;
   padding: 0 0 100px 0;
   font-family: sans-serif;
   overflow-x: hidden;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
   font-family: "Calibre", Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 50px;
 }
 
 
@@ -24,6 +29,7 @@ body {
 .arrow:hover {
   color: #fff;
   font-size: 40px;
+  cursor: pointer;
 }
 
 .nextArrow {
@@ -112,21 +118,26 @@ body {
   cursor: pointer;
 }
 
+img {
+  height: 500px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 
 /* slide functionality and animation*/
 
 .cards-slider {
   position: relative;
-  width: 500px;
   margin: 0 auto;
-  height: 500px;
   overflow: hidden;
   white-space: nowrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .cards-slider-wrapper {
-  /* display: flex; 
-  position: absolute; */
   position: relative;
   height: 100%;
   width: 100%;

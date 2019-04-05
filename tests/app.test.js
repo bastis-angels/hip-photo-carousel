@@ -64,10 +64,10 @@ describe('Overlay', () => {
     expect(nextImageSpy).toHaveBeenCalled();
   });
 
-  //state should update when left or right arrow is clicked – not really sure that this test is working
+  //state should update when left or right arrow is clicked
 
   it('updates the state on left arrow click', () => {
-    const leftArrowClick = shallow(<Overlay prevImage={() => {}}/>);
+    const leftArrowClick = shallow(<Overlay prevImage={() => {}} />);
     
     leftArrowClick.find('LeftArrow').simulate('change', {
       target: {value: 1}
@@ -75,6 +75,30 @@ describe('Overlay', () => {
 
     expect(leftArrowClick.state().currentIndex).toBe(1);
 
+  });
+
+  it('updates the state on right arrow click', () => {
+    const rightArrowClick = shallow(<Overlay nextImage={() => {}} />);
+
+    rightArrowClick.find('RightArrow').simulate('change', {
+      target: {value: 1}
+    });
+
+    expect(rightArrowClick.state().currentIndex).toBe(1);
+
   })
+
+  //Testing the card component 
+
+  //the helpful button should have a function that is called on click
+  //the helpful button state should change (increment the helpful vote by 1) when clicked
+
+  //other things you could test, but might not need to
+  //  1. the counter props match what's passed in
+  //  2. the userName reflects the prop passed down
+  //  3. the post date reflects the prop passed down
+  //  4. location reflects the prop passed down
+  //  5. the description is displayed if there is one (haven't included this in data or component yet)
+
 
 });

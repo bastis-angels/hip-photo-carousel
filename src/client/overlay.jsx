@@ -10,8 +10,9 @@ class Overlay extends React.Component {
     super(props);
     this.state = {
       images: data.images,
-      currentIndex: 0,
-      translateValue: 0
+      image: data.images[0],
+      // currentIndex: 0,
+      // translateValue: 0
     }
 
     this.nextImage = this.nextImage.bind(this);
@@ -19,56 +20,54 @@ class Overlay extends React.Component {
   }
 
   nextImage() {
-    // Exit the method early if we are at the end of the images array and 
-    // reset currentIndex and translateValue, to return to the first image in the array.
-    if(this.state.currentIndex === this.state.images.length - 1) {
-      return this.setState({
-        currentIndex: 0,
-        translateValue: 0
-      })
+    if(this.state.image.index === this.state.images.length - 1) {
+      this.setState({
+        image: data.images[0],
+      });
+      return;
     }
 
-    this.setState = prevState => ({
-      currentIndex: prevState.currentIndex + 1,
-      // translateValue: prevState.translateValue + -(this.cardWidth()),
-    })
+    var newIndex = this.state.image.index + 1;
+    this.setState({
+      image: data.images[newIndex],
+    });
   }
 
   prevImage() {
-    if (this.state.currentIndex === 0) {
+    if (this.state.image.index === 0) {
       return;
     }
-    this.setState = prevState => ({
-      currentIndex: prevState.currentIndex - 1,
-      // translateValue: prevState.translateValue + this.cardWidth()
-    })
-  }
-
-  cardWidth() {
-    return document.querySelector('.card').clientWidth;
+    var newIndex = this.state.image.index - 1;
+    this.setState({
+      image: data.images[newIndex],
+    });
   }
 
   render() {
     return (
-      <div className="cards-slider">
-        <div className="cards-slider-wrapper"
-          style={{
-            // transform: `translateX(${this.state.translateValue}px)`,
-            transition: 'transform ease-out 0.45s'
-          }}>
-
-            {this.state.images.map(image => <Card 
-              key={image.index} 
-              image={image.imageURL} 
-              location={image.location} 
-              index={image.index}
-            />)}
-        
-        </div>
+      <div className="overlay">
+        <div className="cards-slider">
+          <div className="cards-slider-wrapper"
+            style={{
+              // transform: `translateX(${this.state.translateValue}px)`,
+              // transition: 'transform ease-out 0.45s'
+            }}
+            >
+              <Card 
+                key={this.state.image.index} 
+                index={this.state.image.index}
+                image={this.state.image.imageURL} 
+                location={this.state.image.location} 
+                date={this.state.image.datePosted}
+                upVotes={this.state.image.helpfulVotes}
+              />
+          
+          </div>
+        </div> 
 
         <LeftArrow prevImage={this.prevImage}/>
-
         <RightArrow nextImage={this.nextImage}/>
+        
       </div>
     );
   }
