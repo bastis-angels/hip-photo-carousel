@@ -16,7 +16,11 @@ const Card = (props) => {
         <div className="datePosted">Posted on <span>{props.date}</span></div>
       </div>
 
-      <HelpfulBtn votes={props.UpVotes} />
+      <HelpfulBtn 
+        votes={props.upVotes}
+        incrementUpVotes={props.incrementUpVotes}
+        decrementUpVotes={props.decrementUpVotes}
+      />
 
       <div className="location">
           <span><i class="fas fa-map-marker-alt"></i></span> <span>{props.location}</span>

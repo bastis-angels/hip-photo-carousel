@@ -11,14 +11,14 @@ class Overlay extends React.Component {
     this.state = {
       images: data.images,
       image: data.images[0],
-      // currentIndex: 0,
-      // translateValue: 0
     }
 
     this.nextImage = this.nextImage.bind(this);
     this.prevImage = this.prevImage.bind(this);
     this.incrementUpVotes = this.incrementUpVotes.bind(this);
   }
+
+  //Go to next or previous slide (using left and right arrow buttons)
 
   nextImage() {
     if(this.state.image.index === this.state.images.length - 1) {
@@ -44,12 +44,25 @@ class Overlay extends React.Component {
     });
   }
 
-  incrementUpVotes(e) {
+//Increment and decrement Helpful Votes (using helpful button)
+  incrementUpVotes() {
     //will replace this with a patch request that increments upvotes by 1
-    e.preventDefault();
-    var helpfulVotes = this.state.image.helpfulVotes + 1;
-    this.state.image.helpfulVotes = helpfulVotes;
+    const newImage = Object.assign(this.state.image);
+    newImage.helpfulVotes += 1;
+    this.setState({
+      image: newImage,
+    })
   }
+
+  decrementUpVotes() {
+    const newImage = Object.assign(this.state.image);
+    newImage.helpfulVotes -= 1;
+    this.setState({
+      image: newImage,
+    })
+  }
+
+
 
   render() {
     return (
@@ -68,14 +81,15 @@ class Overlay extends React.Component {
                 location={this.state.image.location} 
                 date={this.state.image.datePosted}
                 upVotes={this.state.image.helpfulVotes}
-                incrementUpVotes= {this.incrementUpVotes}
+                incrementUpVotes={this.incrementUpVotes}
+                decrementUpVotes={this.decrementUpVotes}
               />
           
           </div>
         </div> 
-
-        <LeftArrow prevImage={this.prevImage}/>
-        <RightArrow nextImage={this.nextImage}/>
+        <div id='leftArrow'><LeftArrow prevImage={this.prevImage}/></div>    
+        
+        <div id='rightArrow'><RightArrow nextImage={this.nextImage}/></div>
         
       </div>
     );

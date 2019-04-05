@@ -1,6 +1,7 @@
 //import react, enzyme tools, and component you're testing
 import React from "react";
 import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
 import Overlay from "../src/client/overlay"
@@ -45,7 +46,7 @@ describe('Overlay', () => {
       />
     );
 
-    leftArrow.find('.backArrow').simulate('change');
+    leftArrow.find('.backArrow').simulate('click');
 
     expect(prevImageSpy).toHaveBeenCalled();
   });
@@ -59,7 +60,7 @@ describe('Overlay', () => {
       />
     );
 
-    rightArrow.find('.nextArrow').simulate('change');
+    rightArrow.find('.nextArrow').simulate('click');
 
     expect(nextImageSpy).toHaveBeenCalled();
   });
@@ -67,25 +68,20 @@ describe('Overlay', () => {
   //state should update when left or right arrow is clicked
 
   it('updates the state on left arrow click', () => {
-    const leftArrowClick = shallow(<Overlay prevImage={() => {}} />);
+    const overlay = mount(<Overlay />);
     
-    leftArrowClick.find('LeftArrow').simulate('change', {
-      target: {value: 1}
-    });
+    overlay.find('#leftArrow').simulate('click');
 
-    expect(leftArrowClick.state().currentIndex).toBe(1);
+    expect(overlay.state('image')).toBe(data.images[0]);
 
   });
 
   it('updates the state on right arrow click', () => {
-    const rightArrowClick = shallow(<Overlay nextImage={() => {}} />);
+    const overlay = mount(<Overlay />);
 
-    rightArrowClick.find('RightArrow').simulate('change', {
-      target: {value: 1}
-    });
+    overlay.find('#rightArrow').simulate('click');
 
-    expect(rightArrowClick.state().currentIndex).toBe(1);
-
+    expect(overlay.state('image')).toBe(data.images[1]);
   })
 
   //Testing the card component 
