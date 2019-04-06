@@ -20,6 +20,13 @@ class Overlay extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
+  componentDidMount() {
+    window.addEventListener("keydown", this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this.handleKeyPress);
+  }
   //Go to next or previous slide (using left and right arrow buttons)
 
   nextImage() {
@@ -47,8 +54,8 @@ class Overlay extends React.Component {
   }
 
   handleKeyPress(e) {
-    console.log(e.key);
-    if(e.key === 'ArrowRight') {
+    console.log('key code:', e.keyCode);
+    if(e.keyCode === 39) {
       e.preventDefault();
       if(this.state.image.index === this.state.images.length - 1) {
         this.setState({
@@ -63,7 +70,7 @@ class Overlay extends React.Component {
       });
     }
 
-    if(e.key=== 'ArrowLeft'){
+    else if(e.keyCode === 37){
       e.preventDefault();
       if (this.state.image.index === 0) {
         return;
@@ -118,9 +125,9 @@ class Overlay extends React.Component {
           
           </div>
         </div> 
-        <div id='leftArrow'><LeftArrow prevImage={this.prevImage} onKeyPress={this.handleKeyPress}/></div>    
+        <div id='leftArrow'><LeftArrow prevImage={this.prevImage}/></div>    
         
-        <div id='rightArrow'><RightArrow nextImage={this.nextImage} onKeyPress={this.handleKeyPress}/></div>
+        <div id='rightArrow'><RightArrow nextImage={this.nextImage}/></div>
         
       </div>
     );
