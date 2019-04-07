@@ -9,7 +9,7 @@ const Card = (props) => {
       <div class="counter">{props.index + 1} / 30</div>
 
       <div className="close" onClick={() => {props.toggleOverlay()}}>
-        <i class="fas fa-times"></i> 
+        <i class="fas fa-times" />
       </div>
 
       <div className="userInfo">
@@ -36,6 +36,11 @@ const Card = (props) => {
         <i className="fab fa-twitter icon"></i>
         <i className="fas fa-link icon"></i>
       </div>
+
+      <div className="report">
+        <span><i class="far fa-flag" /> </span> <span>Report</span>
+      </div>
+      
       <img src={props.image} alt={props.location} />
     </div>
   )

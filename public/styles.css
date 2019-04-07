@@ -7,7 +7,7 @@
 }
 
 .headerImage {
-  margin: 7px;
+  margin: 8px;
   z-index: -1;
 }
 
@@ -114,6 +114,16 @@
 
 .icon:hover {
   font-size: 1.25em;
+}
+
+.report {
+  font-size: .75em;
+  color: #fff;
+}
+
+.report:hover {
+  cursor: pointer;
+  color: #40d9ac;
 }
 
 .userAvatar {
