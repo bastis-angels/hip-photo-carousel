@@ -4,7 +4,7 @@ import { shallow } from "enzyme";
 import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
-import Overlay from "../src/client/overlay"
+import App from "../src/client/app"
 import { isTSAnyKeyword } from "@babel/types";
 import LeftArrow from "../src/client/leftArrow";
 import Card from "../src/client/card";
