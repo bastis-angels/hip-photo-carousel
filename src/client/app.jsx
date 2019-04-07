@@ -120,7 +120,6 @@ class App extends React.Component {
 
         <div className="carouselHeader">
           <button onClick={this.toggleOverlay}>OVERLAY!</button>
-          <CarouselHeader images={this.state.images}/>
           {this.state.showOverlay && <Overlay 
             key={this.state.image.id} 
             index={this.state.image.index}
@@ -133,6 +132,7 @@ class App extends React.Component {
             nextImage={this.nextImage}
             prevImage={this.prevImage}
           />}
+          <CarouselHeader images={this.state.images}/>
         </div>
 
       </div>
