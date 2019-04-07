@@ -19,12 +19,7 @@ class Overlay extends React.Component {
     return ReactDOM.createPortal(
       <div className="overlay">
         <div className="cardsSlider">
-          <div className="cardsSliderWrapper" 
-            style={{
-              // transform: `translateX(${this.state.translateValue}px)`,
-              // transition: 'transform ease-out 0.45s'
-            }}
-            >
+          <div className="cardsSliderWrapper">
               <Card 
                 key={this.props.key} 
                 index={this.props.index}

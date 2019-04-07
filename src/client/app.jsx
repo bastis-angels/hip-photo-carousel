@@ -1,10 +1,9 @@
 import React from 'react';
 import data from './data.js';
-import CarouselHeader from './header-carousel.jsx';
-import Overlay from './overlay.jsx';
+import CarouselHeader from './header-carousel/header-carousel.jsx';
+import Overlay from './overlay-module/overlay.jsx';
 
 //notes for header-carousel
-  //on component mount, we want to show the header-carousel
   //when any item is clicked on the carousel, we want to render the overlay 
   //when you click the x button, dismount/unrender the overlay component
 class App extends React.Component {
@@ -31,6 +30,7 @@ class App extends React.Component {
   componentWillUnmount() {
     window.removeEventListener("keydown", this.handleKeyPress);
   }
+
   //Show Overlay
 
   toggleOverlay() {
@@ -119,7 +119,7 @@ class App extends React.Component {
       <div>
 
         <div className="carouselHeader">
-          <button onClick={this.toggleOverlay}>OVERLAY!</button>
+          {/* <button onClick={this.toggleOverlay}>OVERLAY!</button> */}
           {this.state.showOverlay && <Overlay 
             key={this.state.image.id} 
             index={this.state.image.index}
@@ -132,7 +132,7 @@ class App extends React.Component {
             nextImage={this.nextImage}
             prevImage={this.prevImage}
           />}
-          <CarouselHeader images={this.state.images}/>
+          <CarouselHeader images={this.state.images} toggleOverlay={this.toggleOverlay}/>
         </div>
 
       </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import HeaderImage from './header-image.jsx';
+import RightArrowHeader from './rightArrow-header.jsx';
+import LeftArrowHeader from './leftArrow-header.jsx';
 
 const CarouselHeader = (props) => {
   const images = props.images.map(image => {
@@ -11,10 +13,11 @@ const CarouselHeader = (props) => {
   />
   });
 
-  //map over the props passed from overlay to create a new header-image with the images array 
   return (
-    <div className="carouselHeader">
+    <div className="carouselHeader" onClick={() => {props.toggleOverlay()}}>
         {images}
+        <RightArrowHeader toggleOverlay={props.toggleOverlay}/>
+        <LeftArrowHeader toggleOverlay={props.toggleOverlay}/>
     </div>
   )
 };

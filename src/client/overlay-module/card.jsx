@@ -1,5 +1,5 @@
 import React from 'react';
-import HelpfulBtn from './HelpfulBtn.jsx';
+import HelpfulBtn from './helpfulBtn.jsx';
 
 
 const Card = (props) => {

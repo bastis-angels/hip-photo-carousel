@@ -3,8 +3,8 @@ import React from 'react';
 const HeaderImage = (props) => {
 
   return (
-    <div id={`image-${props.index}`}>
-      <img src={props.image} alt={props.location} />
+    <div id={`image-${props.index}`} className="headerImage">
+      <img src={props.image} alt={props.location}/>
     </div>
   )
 };

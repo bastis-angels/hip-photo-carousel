@@ -6,20 +6,37 @@
   overflow-x: hidden;
 }
 
+.headerImage {
+  margin: 7px;
+  z-index: -1;
+}
+
+.rightArrowHeader {
+  position: absolute;
+  top: 35%;
+  right: 10px;
+}
+
+.leftArrowHeader {
+  position: absolute;
+  top: 35%;
+}
+
 /* Overlay */
 .overlay {
   margin: 0;
   padding: 50px 50px 100px 50px;
   font-family: sans-serif;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   background-color: rgba(0, 0, 0, 0.8);
   font-family: "Calibre", Helvetica, Arial, sans-serif;
   height: 100%;
   width: 100%;
-  left: 0;
+  /* left: 0; */
   top: 0;
   position: absolute;
-  /* padding: 50px; */
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -66,7 +83,7 @@
 }
 
 .card {
-  display: inline-block;
+  box-sizing: border-box;
   height: 100%;
   width: 100%;
   align-items: center;
