@@ -3,8 +3,12 @@ import data from './data.js';
 import Card from './card.jsx';
 import LeftArrow from './leftArrow.jsx';
 import RightArrow from './rightArrow.jsx';
+import CarouselHeader from './header-carousel.jsx';
 
-
+//notes for header-carousel
+  //on component mount, we want to show the header-carousel
+  //when any item is clicked on the carousel, we want to render the overlay 
+  //when you click the x button, dismount/unrender the overlay component
 class Overlay extends React.Component {
   constructor(props) {
     super(props);
@@ -104,31 +108,39 @@ class Overlay extends React.Component {
 
   render() {
     return (
-      <div className="overlay">
-        <div className="cards-slider">
-          <div className="cards-slider-wrapper" 
-            style={{
-              // transform: `translateX(${this.state.translateValue}px)`,
-              // transition: 'transform ease-out 0.45s'
-            }}
-            >
-              <Card 
-                key={this.state.image.index} 
-                index={this.state.image.index}
-                image={this.state.image.imageURL} 
-                location={this.state.image.location} 
-                date={this.state.image.datePosted}
-                upVotes={this.state.image.helpfulVotes}
-                incrementUpVotes={this.incrementUpVotes}
-                decrementUpVotes={this.decrementUpVotes}
-              />
+      <div>
+
+        <div className="carouselHeader">
+          <CarouselHeader images={this.state.images}/>
+        </div>
+
+        <div className="overlay">
+          <div className="cardsSlider">
+            <div className="cardsSliderWrapper" 
+              style={{
+                // transform: `translateX(${this.state.translateValue}px)`,
+                // transition: 'transform ease-out 0.45s'
+              }}
+              >
+                <Card 
+                  key={this.state.image.id} 
+                  index={this.state.image.index}
+                  image={this.state.image.imageURL} 
+                  location={this.state.image.location} 
+                  date={this.state.image.datePosted}
+                  upVotes={this.state.image.helpfulVotes}
+                  incrementUpVotes={this.incrementUpVotes}
+                  decrementUpVotes={this.decrementUpVotes}
+                />
+            
+            </div>
+          </div> 
+          <div id='leftArrow'><LeftArrow prevImage={this.prevImage}/></div>    
           
-          </div>
+          <div id='rightArrow'><RightArrow nextImage={this.nextImage}/></div>
+          
         </div> 
-        <div id='leftArrow'><LeftArrow prevImage={this.prevImage}/></div>    
-        
-        <div id='rightArrow'><RightArrow nextImage={this.nextImage}/></div>
-        
+
       </div>
     );
   }

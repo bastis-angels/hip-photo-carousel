@@ -1,4 +1,12 @@
 /* main styles */
+
+/* Header Carousel*/
+.carouselHeader {
+  display: flex;
+  overflow-x: hidden;
+}
+
+/* Overlay */
 .overlay {
   margin: 0;
   padding: 50px 50px 100px 50px;
@@ -128,7 +136,7 @@ img {
 
 /* slide functionality and animation*/
 
-.cards-slider {
+.cardsSlider {
   position: relative;
   margin: 0 auto;
   overflow: hidden;
@@ -137,7 +145,7 @@ img {
   justify-content: center;
 }
 
-.cards-slider-wrapper {
+.cardsSliderWrapper {
   position: relative;
   height: 100%;
   width: 100%;
