@@ -39,6 +39,16 @@
   justify-content: center;
 }
 
+.close {
+  font-size: 20px;
+  color: #b4b4b4;
+}
+
+.close:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
 
 /* Arrows */
 .arrow {

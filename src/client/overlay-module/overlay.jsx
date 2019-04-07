@@ -29,6 +29,7 @@ class Overlay extends React.Component {
                 upVotes={this.props.upVotes}
                 incrementUpVotes={this.props.incrementUpVotes}
                 decrementUpVotes={this.props.decrementUpVotes}
+                toggleOverlay={this.props.toggleOverlay}
               />
           
           </div>

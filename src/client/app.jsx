@@ -131,6 +131,7 @@ class App extends React.Component {
             decrementUpVotes={this.decrementUpVotes}
             nextImage={this.nextImage}
             prevImage={this.prevImage}
+            toggleOverlay={this.toggleOverlay}
           />}
           <CarouselHeader images={this.state.images} toggleOverlay={this.toggleOverlay}/>
         </div>

@@ -8,6 +8,10 @@ const Card = (props) => {
 
       <div class="counter">{props.index + 1} / 30</div>
 
+      <div className="close" onClick={() => {props.toggleOverlay()}}>
+        <i class="fas fa-times"></i> 
+      </div>
+
       <div className="userInfo">
         <div className="userAvatar">
           <i class="fas fa-campground"></i>
