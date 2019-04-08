@@ -1,16 +1,52 @@
 /* main styles */
+
+/* Header Carousel*/
+.carouselHeader {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.headerImage {
+  margin: 8px;
+  z-index: -1;
+}
+
+.rightArrowHeader {
+  position: absolute;
+  top: 35%;
+  right: 10px;
+}
+
+.leftArrowHeader {
+  position: absolute;
+  top: 35%;
+}
+
+/* Overlay */
 .overlay {
   margin: 0;
   padding: 50px 50px 100px 50px;
   font-family: sans-serif;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   background-color: rgba(0, 0, 0, 0.8);
   font-family: "Calibre", Helvetica, Arial, sans-serif;
   height: 100%;
   width: 100%;
-  /* left: 0;
-  top: 0; */
-  /* padding: 50px; */
+  /* left: 0; */
+  top: 0;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
+
+.close {
+  font-size: 20px;
+  color: #b4b4b4;
+}
+
+.close:hover {
+  color: #fff;
+  cursor: pointer;
 }
 
 
@@ -57,7 +93,7 @@
 }
 
 .card {
-  display: inline-block;
+  box-sizing: border-box;
   height: 100%;
   width: 100%;
   align-items: center;
@@ -78,6 +114,16 @@
 
 .icon:hover {
   font-size: 1.25em;
+}
+
+.report {
+  font-size: .75em;
+  color: #fff;
+}
+
+.report:hover {
+  cursor: pointer;
+  color: #40d9ac;
 }
 
 .userAvatar {
@@ -128,7 +174,7 @@ img {
 
 /* slide functionality and animation*/
 
-.cards-slider {
+.cardsSlider {
   position: relative;
   margin: 0 auto;
   overflow: hidden;
@@ -137,7 +183,7 @@ img {
   justify-content: center;
 }
 
-.cards-slider-wrapper {
+.cardsSliderWrapper {
   position: relative;
   height: 100%;
   width: 100%;

@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import Overlay from './overlay.jsx';
+import App from './app.jsx';
 
-ReactDOM.render(<Overlay />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
 

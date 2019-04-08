@@ -4,13 +4,10 @@ import { shallow } from "enzyme";
 import { mount } from "enzyme";
 import toJson from "enzyme-to-json";
 
-import Overlay from "../src/client/overlay"
-import { isTSAnyKeyword } from "@babel/types";
-import LeftArrow from "../src/client/leftArrow";
-import Card from "../src/client/card";
-import RightArrow from "../src/client/rightArrow";
-
-import data from "../src/client/data";
+import App from "../src/client/app";
+import LeftArrow from "../src/client/overlay-module/leftArrow";
+import Card from "../src/client/overlay-module/card";
+import RightArrow from "../src/client/overlay-module/rightArrow";
 
 describe('Overlay', () => {
 

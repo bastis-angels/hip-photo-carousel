@@ -1,16 +1,18 @@
 import React from 'react';
 import data from './data.js';
-import Card from './card.jsx';
-import LeftArrow from './leftArrow.jsx';
-import RightArrow from './rightArrow.jsx';
+import CarouselHeader from './header-carousel/header-carousel.jsx';
+import Overlay from './overlay-module/overlay.jsx';
 
-
-class Overlay extends React.Component {
+//notes for header-carousel
+  //when any item is clicked on the carousel, we want to render the overlay 
+  //when you click the x button, dismount/unrender the overlay component
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       images: data.images,
       image: data.images[0],
+      showOverlay: false,
     }
 
     this.nextImage = this.nextImage.bind(this);
@@ -18,8 +20,9 @@ class Overlay extends React.Component {
     this.incrementUpVotes = this.incrementUpVotes.bind(this);
     this.decrementUpVotes = this.decrementUpVotes.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.toggleOverlay = this.toggleOverlay.bind(this);
   }
-
+  
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPress);
   }
@@ -27,6 +30,15 @@ class Overlay extends React.Component {
   componentWillUnmount() {
     window.removeEventListener("keydown", this.handleKeyPress);
   }
+
+  //Show Overlay
+
+  toggleOverlay() {
+    this.setState({
+      showOverlay: !this.state.showOverlay,
+    })
+  }
+
   //Go to next or previous slide (using left and right arrow buttons)
 
   nextImage() {
@@ -104,35 +116,32 @@ class Overlay extends React.Component {
 
   render() {
     return (
-      <div className="overlay">
-        <div className="cards-slider">
-          <div className="cards-slider-wrapper" 
-            style={{
-              // transform: `translateX(${this.state.translateValue}px)`,
-              // transition: 'transform ease-out 0.45s'
-            }}
-            >
-              <Card 
-                key={this.state.image.index} 
-                index={this.state.image.index}
-                image={this.state.image.imageURL} 
-                location={this.state.image.location} 
-                date={this.state.image.datePosted}
-                upVotes={this.state.image.helpfulVotes}
-                incrementUpVotes={this.incrementUpVotes}
-                decrementUpVotes={this.decrementUpVotes}
-              />
-          
-          </div>
-        </div> 
-        <div id='leftArrow'><LeftArrow prevImage={this.prevImage}/></div>    
-        
-        <div id='rightArrow'><RightArrow nextImage={this.nextImage}/></div>
-        
+      <div>
+
+        <div className="carouselHeader">
+          {/* <button onClick={this.toggleOverlay}>OVERLAY!</button> */}
+          {this.state.showOverlay && <Overlay 
+            key={this.state.image.id} 
+            index={this.state.image.index}
+            image={this.state.image.imageURL} 
+            location={this.state.image.location} 
+            date={this.state.image.datePosted}
+            upVotes={this.state.image.helpfulVotes}
+            incrementUpVotes={this.incrementUpVotes}
+            decrementUpVotes={this.decrementUpVotes}
+            nextImage={this.nextImage}
+            prevImage={this.prevImage}
+            toggleOverlay={this.toggleOverlay}
+          />}
+          <CarouselHeader images={this.state.images} toggleOverlay={this.toggleOverlay}/>
+        </div>
+
       </div>
     );
   }
 }
 
-export default Overlay;
+
+
+export default App;
 
