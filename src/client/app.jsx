@@ -32,7 +32,6 @@ class App extends React.Component {
     window.removeEventListener("keydown", this.handleKeyPress);
   }
 
-
   //API calls 
 
   getImages() {
@@ -52,6 +51,23 @@ class App extends React.Component {
         image: parstedJSON.images[0]})
     });
   }
+
+  updateUpVotes(newVoteCount) {
+    fetch(`/listing/${this.state.image.index}`, {
+      method: 'PUT',
+      body: JSON.stringify(newVoteCount),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    }).then(response => {
+      return response.json();
+    }).then(parsedJSON => {
+      this.setState({
+        image:parsedJSON
+      })
+    });
+  }
+
   //Show Overlay
 
   toggleOverlay() {
@@ -65,14 +81,14 @@ class App extends React.Component {
   nextImage() {
     if(this.state.image.index === this.state.images.length - 1) {
       this.setState({
-        image: data.images[0],
+        image: this.state.images[0],
       });
       return;
     }
 
     var newIndex = this.state.image.index + 1;
     this.setState({
-      image: data.images[newIndex],
+      image: this.state.images[newIndex],
     });
   }
 
@@ -82,7 +98,7 @@ class App extends React.Component {
     }
     var newIndex = this.state.image.index - 1;
     this.setState({
-      image: data.images[newIndex],
+      image: this.state.images[newIndex],
     });
   }
 
@@ -92,14 +108,14 @@ class App extends React.Component {
       e.preventDefault();
       if(this.state.image.index === this.state.images.length - 1) {
         this.setState({
-          image: data.images[0],
+          image: this.state.images[0],
         });
         return;
       }
   
       var newIndex = this.state.image.index + 1;
       this.setState({
-        image: data.images[newIndex],
+        image: this.state.images[newIndex],
       });
     }
 
@@ -110,7 +126,7 @@ class App extends React.Component {
       }
       var newIndex = this.state.image.index - 1;
       this.setState({
-        image: data.images[newIndex],
+        image: this.state.images[newIndex],
       });
     }
   }
