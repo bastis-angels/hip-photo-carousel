@@ -86,7 +86,7 @@ class App extends React.Component {
       return;
     }
 
-    var newIndex = this.state.image.index + 1;
+    let newIndex = this.state.image.index + 1;
     this.setState({
       image: this.state.images[newIndex],
     });
@@ -96,7 +96,7 @@ class App extends React.Component {
     if (this.state.image.index === 0) {
       return;
     }
-    var newIndex = this.state.image.index - 1;
+    let newIndex = this.state.image.index - 1;
     this.setState({
       image: this.state.images[newIndex],
     });
@@ -137,7 +137,6 @@ class App extends React.Component {
     this.setState({
       image: newVote,
     });
-    // will replace with Patch req: this.updateUpVotes(1);
   }
 
   decrementUpVotes() {
@@ -146,7 +145,6 @@ class App extends React.Component {
     this.setState({
       image: newVote,
     });
-    // will replace with Patch req: this.updateUpVotes(0);
   }
 
 

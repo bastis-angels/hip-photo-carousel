@@ -32,12 +32,11 @@ app.patch('/listing/:listingID/:imageID/:num', (req, res) => {
           if(JSON.parse(req.params.num) === 1) {
             listing.images[i].helpfulVotes += 1;
             listing.save();
-            res.status(206).send(listing.images[i]);
           } else {
             listing.images[i].helpfulVotes -= 1;
             listing.save();
-            res.status(206).send(listing.images[i]);
           }
+          res.status(206).send(listing.images[i]);
           break;
         }   
       }
