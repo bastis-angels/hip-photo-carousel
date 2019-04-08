@@ -17,7 +17,7 @@ const Card = (props) => {
           <i class="fas fa-campground"></i>
         </div>
         <div className="userName">Eliana L.</div>
-        <div className="datePosted">Posted on <span>{props.date}</span></div>
+        <div className="datePosted">Posted on <span id="date">{props.date}</span></div>
       </div>
 
       <HelpfulBtn 
@@ -27,7 +27,7 @@ const Card = (props) => {
       />
 
       <div className="location">
-          <span><i class="fas fa-map-marker-alt"></i></span> <span>{props.location}</span>
+          <span><i class="fas fa-map-marker-alt"></i></span> <span id="locale">{props.location}</span>
       </div>
 
       <div className="socialMediaIcons">
@@ -40,7 +40,7 @@ const Card = (props) => {
       <div className="report">
         <span><i class="far fa-flag" /> </span> <span>Report</span>
       </div>
-      
+
       <img src={props.image} alt={props.location} />
     </div>
   )
