@@ -6,11 +6,11 @@ import LeftArrowHeader from './leftArrow-header.jsx';
 const CarouselHeader = (props) => {
   const images = props.images.map(image => {
     return <HeaderImage 
-    key={image.id}
-    index={image.index}
-    image={image.imageURL}
-    location={image.location}
-  />
+      key={image.id}
+      index={image.index}
+      image={image.imageURL}
+      location={image.location}
+    />
   });
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import data from './data.js';
+// import data from './data.js';
 import CarouselHeader from './header-carousel/header-carousel.jsx';
 import Overlay from './overlay-module/overlay.jsx';
 
@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: data.images,
-      image: data.images[0],
+      images: [],
+      image: {},
       showOverlay: false,
     }
 
@@ -25,11 +25,48 @@ class App extends React.Component {
   
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPress);
+    this.getImages();
   }
 
   componentWillUnmount() {
     window.removeEventListener("keydown", this.handleKeyPress);
   }
+
+  //API calls 
+
+  getImages() {
+    fetch('/listing/1', {
+      method: 'GET',
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(parstedJSON => {
+      this.setState({
+        images: parstedJSON.images, 
+        image: parstedJSON.images[0]
+      });
+    });
+  }
+
+  // updateUpVotes(num) {
+  //   fetch(`/listing/1/${this.state.image.index}/${num}`, {
+  //     method: 'PATCH',
+  //     headers:{
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }).then(response => {
+  //     return response.json();
+  //   }).then(parsedJSON => {
+  //     this.setState({
+  //       image: parsedJSON,
+  //     })
+  //   });
+  // }
 
   //Show Overlay
 
@@ -44,14 +81,14 @@ class App extends React.Component {
   nextImage() {
     if(this.state.image.index === this.state.images.length - 1) {
       this.setState({
-        image: data.images[0],
+        image: this.state.images[0],
       });
       return;
     }
 
-    var newIndex = this.state.image.index + 1;
+    let newIndex = this.state.image.index + 1;
     this.setState({
-      image: data.images[newIndex],
+      image: this.state.images[newIndex],
     });
   }
 
@@ -59,26 +96,25 @@ class App extends React.Component {
     if (this.state.image.index === 0) {
       return;
     }
-    var newIndex = this.state.image.index - 1;
+    let newIndex = this.state.image.index - 1;
     this.setState({
-      image: data.images[newIndex],
+      image: this.state.images[newIndex],
     });
   }
 
   handleKeyPress(e) {
-    console.log('key code:', e.keyCode);
     if(e.keyCode === 39) {
       e.preventDefault();
       if(this.state.image.index === this.state.images.length - 1) {
         this.setState({
-          image: data.images[0],
+          image: this.state.images[0],
         });
         return;
       }
   
       var newIndex = this.state.image.index + 1;
       this.setState({
-        image: data.images[newIndex],
+        image: this.state.images[newIndex],
       });
     }
 
@@ -89,27 +125,26 @@ class App extends React.Component {
       }
       var newIndex = this.state.image.index - 1;
       this.setState({
-        image: data.images[newIndex],
+        image: this.state.images[newIndex],
       });
     }
   }
 
 //Increment and decrement Helpful Votes (using helpful button)
   incrementUpVotes() {
-    //will replace this with a patch request that increments upvotes by 1
-    const newImage = Object.assign(this.state.image);
-    newImage.helpfulVotes += 1;
+    const newVote = Object.assign(this.state.image);
+    newVote.helpfulVotes += 1;
     this.setState({
-      image: newImage,
-    })
+      image: newVote,
+    });
   }
 
   decrementUpVotes() {
-    const newImage = Object.assign(this.state.image);
-    newImage.helpfulVotes -= 1;
+    const newVote = Object.assign(this.state.image);
+    newVote.helpfulVotes -= 1;
     this.setState({
-      image: newImage,
-    })
+      image: newVote,
+    });
   }
 
 
@@ -119,7 +154,6 @@ class App extends React.Component {
       <div>
 
         <div className="carouselHeader">
-          {/* <button onClick={this.toggleOverlay}>OVERLAY!</button> */}
           {this.state.showOverlay && <Overlay 
             key={this.state.image.id} 
             index={this.state.image.index}

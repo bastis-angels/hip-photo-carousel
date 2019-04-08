@@ -35,8 +35,7 @@
   /* left: 0; */
   top: 0;
   position: absolute;
-  align-items: center;
-  justify-content: center;
+  
 }
 
 .close {
@@ -55,11 +54,7 @@
   font-size: 30px;
   height: 100px;
   width: 100px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
   color: #b4b4b4;
-  transition: transform ease-in .1s;
 }
 
 .arrow:hover {
@@ -78,6 +73,7 @@
 .backArrow {
   position: absolute;
   top: 50%;
+  left: 10px;
   z-index: 999;
 }
 
