@@ -1,5 +1,5 @@
 import React from 'react';
-import data from './data.js';
+// import data from './data.js';
 import CarouselHeader from './header-carousel/header-carousel.jsx';
 import Overlay from './overlay-module/overlay.jsx';
 
@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: data.images,
-      image: data.images[0],
+      images: [],
+      image: {},
       showOverlay: false,
     }
 
@@ -25,12 +25,33 @@ class App extends React.Component {
   
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyPress);
+    this.getImages();
   }
 
   componentWillUnmount() {
     window.removeEventListener("keydown", this.handleKeyPress);
   }
 
+
+  //API calls 
+
+  getImages() {
+    fetch('/listing/1', {
+      method: 'GET',
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(parstedJSON => {
+      this.setState({
+        images: parstedJSON.images, 
+        image: parstedJSON.images[0]})
+    });
+  }
   //Show Overlay
 
   toggleOverlay() {
