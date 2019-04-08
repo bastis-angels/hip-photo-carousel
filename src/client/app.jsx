@@ -48,25 +48,25 @@ class App extends React.Component {
     .then(parstedJSON => {
       this.setState({
         images: parstedJSON.images, 
-        image: parstedJSON.images[0]})
+        image: parstedJSON.images[0]
+      });
     });
   }
 
-  updateUpVotes(newVoteCount) {
-    fetch(`/listing/${this.state.image.index}`, {
-      method: 'PUT',
-      body: JSON.stringify(newVoteCount),
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    }).then(response => {
-      return response.json();
-    }).then(parsedJSON => {
-      this.setState({
-        image:parsedJSON
-      })
-    });
-  }
+  // updateUpVotes(num) {
+  //   fetch(`/listing/1/${this.state.image.index}/${num}`, {
+  //     method: 'PATCH',
+  //     headers:{
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }).then(response => {
+  //     return response.json();
+  //   }).then(parsedJSON => {
+  //     this.setState({
+  //       image: parsedJSON,
+  //     })
+  //   });
+  // }
 
   //Show Overlay
 
@@ -103,7 +103,6 @@ class App extends React.Component {
   }
 
   handleKeyPress(e) {
-    console.log('key code:', e.keyCode);
     if(e.keyCode === 39) {
       e.preventDefault();
       if(this.state.image.index === this.state.images.length - 1) {
@@ -133,20 +132,21 @@ class App extends React.Component {
 
 //Increment and decrement Helpful Votes (using helpful button)
   incrementUpVotes() {
-    //will replace this with a patch request that increments upvotes by 1
-    const newImage = Object.assign(this.state.image);
-    newImage.helpfulVotes += 1;
+    const newVote = Object.assign(this.state.image);
+    newVote.helpfulVotes += 1;
     this.setState({
-      image: newImage,
-    })
+      image: newVote,
+    });
+    // will replace with Patch req: this.updateUpVotes(1);
   }
 
   decrementUpVotes() {
-    const newImage = Object.assign(this.state.image);
-    newImage.helpfulVotes -= 1;
+    const newVote = Object.assign(this.state.image);
+    newVote.helpfulVotes -= 1;
     this.setState({
-      image: newImage,
-    })
+      image: newVote,
+    });
+    // will replace with Patch req: this.updateUpVotes(0);
   }
 
 

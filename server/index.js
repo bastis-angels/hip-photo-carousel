@@ -22,15 +22,22 @@ app.get('/listing/:listingID', (req, res) => {
 });
 
 //Finds a particular listing image and updates the helpful vote count by 1
-app.patch('/listing/:listingID/:imageID', (req, res) => {
+app.patch('/listing/:listingID/:imageID/:num', (req, res) => {
   Listings.findById(req.params.listingID, (err, listing) => {
     if (err) {
       res.status(404).send(err);
     } else {
       for (let i = 0; i < listing.images.length; i++) {
         if (listing.images[i].id = req.params.imageID) {
-          listing.images[i].helpfulVotes += 1;
-          res.status(206).send(listing.images[i]);
+          if(JSON.parse(req.params.num) === 1) {
+            listing.images[i].helpfulVotes += 1;
+            listing.save();
+            res.status(206).send(listing.images[i]);
+          } else {
+            listing.images[i].helpfulVotes -= 1;
+            listing.save();
+            res.status(206).send(listing.images[i]);
+          }
           break;
         }   
       }
