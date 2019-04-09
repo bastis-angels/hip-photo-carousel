@@ -3,6 +3,37 @@ import ReactDOM from 'react-dom';
 import Card from './card.jsx';
 import LeftArrow from './leftArrow.jsx';
 import RightArrow from './rightArrow.jsx';
+import styled from 'styled-components';
+
+// Styles //
+
+const OuterOverlay = styled.div `
+  margin: 0;
+  padding: 50px 50px 100px 50px;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-family: "Calibre", Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: absolute;
+`
+
+const CardSlider = styled.div `
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+`
+
+const CardSliderWrapper = styled.div `
+  position: relative;
+  height: 100%;
+  width: 100%;
+`
 
 class Overlay extends React.Component {
   constructor(props) {
@@ -17,10 +48,10 @@ class Overlay extends React.Component {
 
   render() {
     return ReactDOM.createPortal(
-      <div className="overlay">
+      <OuterOverlay>
         <div className="overlayContent">
-          <div className="cardsSlider">
-            <div className="cardsSliderWrapper">
+          <CardSlider>
+            <CardSliderWrapper>
                 <Card 
                   key={this.props.key} 
                   index={this.props.index}
@@ -33,13 +64,13 @@ class Overlay extends React.Component {
                   toggleOverlay={this.props.toggleOverlay}
                 />
             
-            </div>
-          </div> 
+            </CardSliderWrapper>
+          </CardSlider> 
         <div id='leftArrow'><LeftArrow prevImage={this.props.prevImage}/></div>    
         
         <div id='rightArrow'><RightArrow nextImage={this.props.nextImage}/></div>
       </div>
-    </div>, this.container
+    </OuterOverlay>, this.container
     )};
 }
 

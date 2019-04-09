@@ -1,4 +1,22 @@
 import React from "react";
+import styled from 'styled-components';
+
+const Helpful = styled.button `
+  display: inline-block;
+  margin-bottom: 0;
+  height: 45px;
+  width: 105px;
+  color: #fff;
+  background-color: #40d9ac;
+  font-size: .75rem;
+  font-weight: 700;
+  text-align: center;
+  border-color: transparent;
+  vertical-align: middle;
+  transition: background-color 0.3s ease 0s, border-color 0.4s ease 0s, color 0.4s ease 0s;
+  touch-action: manipulation;
+  cursor: pointer;
+`
 
 class HelpfulBtn extends React.Component {
   constructor(props) {
@@ -10,10 +28,6 @@ class HelpfulBtn extends React.Component {
 
     this.handleClick= this.handleClick.bind(this);
   }
-
-  //create an event handler that will toggle state clicked between true and false (will change the style based on state)
-  //create a method in Overlay that will set the value of image votes in the current image
-  //  pass it to card and button as props
 
   handleClick(e) {
     e.preventDefault();
@@ -33,11 +47,11 @@ class HelpfulBtn extends React.Component {
 
   render() {
     return(
-      <button className="helpful" onClick={this.handleClick}>
+      <Helpful onClick={this.handleClick}>
         <span className="thumb"><i class="far fa-thumbs-up" ></i> &nbsp; </span> 
         Helpful 
         <span> &nbsp; {this.props.votes} </span>
-      </button>
+      </Helpful>
     )
   }
 }

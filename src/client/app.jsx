@@ -1,11 +1,16 @@
 import React from 'react';
-// import data from './data.js';
 import CarouselHeader from './header-carousel/header-carousel.jsx';
 import Overlay from './overlay-module/overlay.jsx';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-//notes for header-carousel
-  //when any item is clicked on the carousel, we want to render the overlay 
-  //when you click the x button, dismount/unrender the overlay component
+const Routing = () => {
+  return (
+    <Router>
+      <Route path='/listing/:listingID' component={App} />
+    </Router>
+  )
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +40,8 @@ class App extends React.Component {
   //API calls 
 
   getImages() {
-    fetch('/listing/1', {
+    const id = this.props.match.params.listingID;
+    fetch(`/${id}`, {
       method: 'GET',
       headers : { 
         'Content-Type': 'application/json',
@@ -177,5 +183,4 @@ class App extends React.Component {
 
 
 
-export default App;
-
+export default Routing;

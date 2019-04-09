@@ -1,16 +1,16 @@
 const express = require('express');
 let app = express();
-const port = 3000;
+const port = 3001;
 
 const bodyParser = require('body-parser');
 const Listings = require('../server/database/Listing.js')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
-app.use(express.static('public'));
+app.use('/listing/:listingID', express.static('public'));
 
 //gets all listings
-app.get('/listing/:listingID', (req, res) => {
+app.get('/:listingID', (req, res) => {
   Listings.findById(req.params.listingID, (err, listing) => {
     if (err) {
       res.status(404).send(err);
