@@ -1,15 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 
+const Image = styled.img `
+  margin: 8px;
+  z-index: -1;
+  height: 500px;
+  width: auto;
+  display: flex;
+`
 const HeaderImage = (props) => {
 
   return (
-    <div id={`image-${props.index}`} className="headerImage">
-      <img src={props.image} alt={props.location}/>
-    </div>
+      <Image src={props.image} alt={props.location} id={`image-${props.index}`}/>
   )
 };
-
-//add onClick event handler and pass down a prop that will render the overlay with the image index indicated as the state
 
 export default HeaderImage;
 

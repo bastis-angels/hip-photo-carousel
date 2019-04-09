@@ -2,7 +2,12 @@ import React from 'react';
 import HeaderImage from './header-image.jsx';
 import RightArrowHeader from './rightArrow-header.jsx';
 import LeftArrowHeader from './leftArrow-header.jsx';
+import styled from 'styled-components';
 
+const  Carousel = styled.div `
+  display: flex;
+  overflow-x: hidden;
+`
 const CarouselHeader = (props) => {
   const images = props.images.map(image => {
     return <HeaderImage 
@@ -14,11 +19,11 @@ const CarouselHeader = (props) => {
   });
 
   return (
-    <div className="carouselHeader" onClick={() => {props.toggleOverlay()}}>
+    <Carousel onClick={() => {props.toggleOverlay()}}>
         {images}
         <RightArrowHeader toggleOverlay={props.toggleOverlay}/>
         <LeftArrowHeader toggleOverlay={props.toggleOverlay}/>
-    </div>
+    </Carousel>
   )
 };
 

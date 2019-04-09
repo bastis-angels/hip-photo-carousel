@@ -1,10 +1,28 @@
 import React from "react";
+import styled from 'styled-components';
 
+const OuterArrow = styled.div `
+  position: absolute;
+  top: 35%;
+
+  /* props from arrow class */ 
+
+  font-size: 30px;
+  height: 100px;
+  width: 100px;
+  color: #b4b4b4;
+
+  &:hover {
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+  }
+`
 const LeftArrowHeader = (props) => {
   return (
-    <div className="leftArrowHeader arrow" onClick={() => {props.toggleOverlay()}}>
+    <OuterArrow onClick={() => {props.toggleOverlay()}}>
       <i className="fas fa-chevron-left"></i>
-    </div>
+    </OuterArrow >
   )
 }
 
