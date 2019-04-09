@@ -1,6 +1,6 @@
 const express = require('express');
 let app = express();
-const port = 3000;
+const port = 3001;
 
 const bodyParser = require('body-parser');
 const Listings = require('../server/database/Listing.js')
