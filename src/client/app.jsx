@@ -4,7 +4,6 @@ import Overlay from './overlay-module/overlay.jsx';
 
 class App extends React.Component {
   constructor(props) {
-    console.log('this is the App constructor');
     super(props);
     this.state = {
       images: [],
@@ -22,7 +21,6 @@ class App extends React.Component {
   
   componentDidMount() {
     const url = window.location.pathname;
-    console.log(url);
     window.addEventListener("keydown", this.handleKeyPress);
     this.getImages(url);
   }
@@ -149,7 +147,6 @@ class App extends React.Component {
 
 
   render() {
-    console.log("this is the App");
 
     return (
       <div>
