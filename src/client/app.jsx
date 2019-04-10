@@ -1,16 +1,6 @@
 import React from 'react';
 import CarouselHeader from './header-carousel/header-carousel.jsx';
 import Overlay from './overlay-module/overlay.jsx';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-
-// const Routing = () => {
-//   console.log("this is the router function");
-//   return (
-//     <Router>
-//       <Route path='/listing/:listingID' component={App} />
-//     </Router>
-//   )
-// }
 
 class App extends React.Component {
   constructor(props) {
@@ -44,7 +34,6 @@ class App extends React.Component {
   //API calls 
 
   getImages(url) {
-    // const id = this.props.match.params.listingID;
     fetch(`http://localhost:3001/photo${url}`, {
       method: 'GET',
       headers : { 
