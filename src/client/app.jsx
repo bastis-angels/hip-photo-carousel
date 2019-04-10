@@ -3,16 +3,18 @@ import CarouselHeader from './header-carousel/header-carousel.jsx';
 import Overlay from './overlay-module/overlay.jsx';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-const Routing = () => {
-  return (
-    <Router>
-      <Route path='/listing/:listingID' component={App} />
-    </Router>
-  )
-}
+// const Routing = () => {
+//   console.log("this is the router function");
+//   return (
+//     <Router>
+//       <Route path='/listing/:listingID' component={App} />
+//     </Router>
+//   )
+// }
 
 class App extends React.Component {
   constructor(props) {
+    console.log('this is the App constructor');
     super(props);
     this.state = {
       images: [],
@@ -29,8 +31,10 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    const url = window.location.pathname;
+    console.log(url);
     window.addEventListener("keydown", this.handleKeyPress);
-    this.getImages();
+    this.getImages(url);
   }
 
   componentWillUnmount() {
@@ -39,9 +43,9 @@ class App extends React.Component {
 
   //API calls 
 
-  getImages() {
-    const id = this.props.match.params.listingID;
-    fetch(`/${id}`, {
+  getImages(url) {
+    // const id = this.props.match.params.listingID;
+    fetch(`http://localhost:3001/photo${url}`, {
       method: 'GET',
       headers : { 
         'Content-Type': 'application/json',
@@ -156,6 +160,8 @@ class App extends React.Component {
 
 
   render() {
+    console.log("this is the App");
+
     return (
       <div>
 
@@ -183,4 +189,4 @@ class App extends React.Component {
 
 
 
-export default Routing;
+export default App;
